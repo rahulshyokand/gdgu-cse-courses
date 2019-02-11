@@ -95,10 +95,7 @@ palindrome_or_not(200)
 
 
 
-
-
-
-
+# tester Github
 
 
 
