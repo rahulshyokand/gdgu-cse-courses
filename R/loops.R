@@ -70,28 +70,28 @@ odd_or_even(50)
 # to check if entered number is Palindrome or Not
 
 #making a Element Reverse function 
-
 reverse_element <- function(x){
   reverse = 0
-  while(x > 0 ){
-    lastDigit <- x %% 10
+  while(x > 1 ){
+   lastDigit <- floor(x %% 10)
     reverse = (reverse * 10) + lastDigit
+    
     x <- x / 10 
-    return(reverse)
   }
+  return(reverse)
 }
-reverse_element(400)
-
+reverse_element(245633)
 
 palindrome_or_not <- function(num){
+  #calling reverse function 
   if(num  == reverse_element(num))
     output <-paste( num , "is Palindrome")
   else
     output  <- paste(num , "is not Palindrome")
   return(output)
 }
-palindrome_or_not(200)
-
+palindrome_or_not(22)
+palindrome_or_not(45)
 
 
 
