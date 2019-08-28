@@ -1,5 +1,4 @@
 #include<stdio.h>
-
 struct process {
     int pid;
     int btime;
@@ -7,9 +6,15 @@ struct process {
     int ttime;
 }
 p[10];
+// sorting function declaration
+void sortProcessByBurstTime(struct process p[], int n);
+
 void main() {
     int i, j, k, n, ttur, twat;
     float awat, atur;
+   
+    printf("---------SJF CPU Scheduling--------\n");
+   
     printf("Enter Number of Processes: ");
     scanf("%d", & n);
     for (i = 0; i < n; i++) {
@@ -17,6 +22,11 @@ void main() {
         scanf("%d", & p[i].btime);
         p[i].pid = i + 1;
     }
+    
+    
+    // calling sorting function before any action on Processes
+   sortProcessByBurstTime(p, n);
+    
 
     // calculating wait time & turnaround time of each process
     p[0].wtime = 0;
@@ -39,7 +49,7 @@ void main() {
     atur = (float) ttur / n;
 
     /* Displaying Data in Tabular Format */
-    printf("\nFCFS Scheduling\n\n");
+    printf("\nSJF CPU Scheduling\n\n");
     // setting top line
     for (i = 0; i < 28; i++)
         printf("-");
@@ -86,3 +96,22 @@ void main() {
     printf("\n\nAverage Waiting time %5.2fms", awat);
     printf("\n\nAverage Turnaround time %5.2fms\n", atur);
 }
+
+   
+ // sorting function defination outside main
+    void sortProcessByBurstTime(struct process p[], int n)
+{
+    int x, y;
+    struct process temp;
+    for(x=0; x<n-1; x++) {
+        for(y=0; y<n-1-x; y++) {
+        	// swaping after comparing current element with previous
+            if(p[y].btime > p[y+1].btime) {
+                temp = p[y];
+                p[y] = p[y+1];
+                p[y+1] = temp;
+            }
+        }
+    }
+}
+
