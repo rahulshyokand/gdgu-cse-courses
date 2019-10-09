@@ -51,7 +51,7 @@ h[j].size -= p[i].size;
 }
 // printing relevent details
 printf("----------------");
-printf("\n\tFirst fit\n");
+printf("\nFirst fit\n");
 printf("----------------");
 printf("\nProcess\tPSize\tHole");
 for(i=0; i<numprocesses; i++)
